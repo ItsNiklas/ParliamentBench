@@ -1,0 +1,445 @@
+{
+  "arms": {
+    "gemma": {
+      "label": "Gemma 3 27B",
+      "paths": {
+        "loaded": "runsF2-GEMMA",
+        "neutral": "runsF2-GEMMA-NEUTRAL"
+      },
+      "loaded": {
+        "n": 100,
+        "overall_wins": 34,
+        "win_rate": 0.34,
+        "win_rate_ci": [
+          0.25461379497543,
+          0.43722454341689065
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 15,
+            "win_rate": 0.25,
+            "ci": [
+              0.1577638557841185,
+              0.372323109454848
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 8,
+            "win_rate": 0.4,
+            "ci": [
+              0.21880396741419272,
+              0.613422057684794
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 11,
+            "win_rate": 0.55,
+            "ci": [
+              0.3420820083075997,
+              0.7418049791429071
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 17,
+          "fascist_policies": 3,
+          "hitler_chancellor": 61,
+          "hitler_killed": 19
+        },
+        "avg_rounds": 10.44,
+        "alice_chat_count": 1170,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 1,
+        "refusal_chat_rate": 0.0008547008547008547
+      },
+      "neutral": {
+        "n": 100,
+        "overall_wins": 34,
+        "win_rate": 0.34,
+        "win_rate_ci": [
+          0.25461379497543,
+          0.43722454341689065
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 20,
+            "win_rate": 0.3333333333333333,
+            "ci": [
+              0.2272909421592783,
+              0.459433701333366
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 8,
+            "win_rate": 0.4,
+            "ci": [
+              0.21880396741419272,
+              0.613422057684794
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 6,
+            "win_rate": 0.3,
+            "ci": [
+              0.14547527396899385,
+              0.5189767762289793
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 22,
+          "fascist_policies": 1,
+          "hitler_chancellor": 53,
+          "hitler_killed": 24
+        },
+        "avg_rounds": 11.76,
+        "alice_chat_count": 1284,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 0,
+        "refusal_chat_rate": 0.0
+      },
+      "compare": {
+        "overall": {
+          "loaded_wr": 0.34,
+          "neutral_wr": 0.34,
+          "delta": 0.0,
+          "z": 0.0,
+          "p": 1.0,
+          "n_loaded": 100,
+          "n_neutral": 100
+        },
+        "by_role": {
+          "liberal": {
+            "loaded_wr": 0.25,
+            "neutral_wr": 0.3333333333333333,
+            "delta": 0.08333333333333331,
+            "z": -1.0041928905068673,
+            "p": 0.3152856482682897,
+            "n_loaded": 60,
+            "n_neutral": 60
+          },
+          "fascist": {
+            "loaded_wr": 0.4,
+            "neutral_wr": 0.4,
+            "delta": 0.0,
+            "z": 0.0,
+            "p": 1.0,
+            "n_loaded": 20,
+            "n_neutral": 20
+          },
+          "hitler": {
+            "loaded_wr": 0.55,
+            "neutral_wr": 0.3,
+            "delta": -0.25000000000000006,
+            "z": 1.5992325525180036,
+            "p": 0.10976893978320737,
+            "n_loaded": 20,
+            "n_neutral": 20
+          }
+        }
+      }
+    },
+    "mistral": {
+      "label": "Mistral Small 24B",
+      "paths": {
+        "loaded": "runsF2-MISTRALSMALL",
+        "neutral": "runsF2-MISTRALSMALL-NEUTRAL"
+      },
+      "loaded": {
+        "n": 100,
+        "overall_wins": 47,
+        "win_rate": 0.47,
+        "win_rate_ci": [
+          0.3751065198210374,
+          0.5671131686275227
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 23,
+            "win_rate": 0.38333333333333336,
+            "ci": [
+              0.2708808958488824,
+              0.5098263545959686
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 11,
+            "win_rate": 0.55,
+            "ci": [
+              0.3420820083075997,
+              0.7418049791429071
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 13,
+            "win_rate": 0.65,
+            "ci": [
+              0.43285051021946463,
+              0.8188104521320554
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 24,
+          "fascist_policies": 4,
+          "hitler_chancellor": 57,
+          "hitler_killed": 15
+        },
+        "avg_rounds": 9.63,
+        "alice_chat_count": 1104,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 0,
+        "refusal_chat_rate": 0.0
+      },
+      "neutral": {
+        "n": 100,
+        "overall_wins": 41,
+        "win_rate": 0.41,
+        "win_rate_ci": [
+          0.31867157095664655,
+          0.5079874943890338
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 34,
+            "win_rate": 0.5666666666666667,
+            "ci": [
+              0.44103214654694856,
+              0.6842779960559936
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 2,
+            "win_rate": 0.1,
+            "ci": [
+              0.027865893984153206,
+              0.30103820641179335
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 5,
+            "win_rate": 0.25,
+            "ci": [
+              0.11186005278940309,
+              0.4687050099580636
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 43,
+          "fascist_policies": 0,
+          "hitler_chancellor": 33,
+          "hitler_killed": 24
+        },
+        "avg_rounds": 9.89,
+        "alice_chat_count": 1106,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 0,
+        "refusal_chat_rate": 0.0
+      },
+      "compare": {
+        "overall": {
+          "loaded_wr": 0.47,
+          "neutral_wr": 0.41,
+          "delta": -0.06,
+          "z": 0.8547043234472844,
+          "p": 0.39271485645527043,
+          "n_loaded": 100,
+          "n_neutral": 100
+        },
+        "by_role": {
+          "liberal": {
+            "loaded_wr": 0.38333333333333336,
+            "neutral_wr": 0.5666666666666667,
+            "delta": 0.1833333333333333,
+            "z": -2.0108311560592997,
+            "p": 0.04434329403547188,
+            "n_loaded": 60,
+            "n_neutral": 60
+          },
+          "fascist": {
+            "loaded_wr": 0.55,
+            "neutral_wr": 0.1,
+            "delta": -0.45000000000000007,
+            "z": 3.038218101251,
+            "p": 0.0023798164638097054,
+            "n_loaded": 20,
+            "n_neutral": 20
+          },
+          "hitler": {
+            "loaded_wr": 0.65,
+            "neutral_wr": 0.25,
+            "delta": -0.4,
+            "z": 2.5425669046549126,
+            "p": 0.011004153176868802,
+            "n_loaded": 20,
+            "n_neutral": 20
+          }
+        }
+      }
+    },
+    "gptoss": {
+      "label": "GPT-OSS 120B",
+      "paths": {
+        "loaded": "runsF2-GPTOSS120B",
+        "neutral": "runsF2-GPTOSS120B-NEUTRAL"
+      },
+      "loaded": {
+        "n": 100,
+        "overall_wins": 46,
+        "win_rate": 0.46,
+        "win_rate_ci": [
+          0.36560643853331865,
+          0.5573531460647615
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 12,
+            "win_rate": 0.2,
+            "ci": [
+              0.11828389736858964,
+              0.3178204609181701
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 15,
+            "win_rate": 0.75,
+            "ci": [
+              0.5312949900419365,
+              0.888139947210597
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 19,
+            "win_rate": 0.95,
+            "ci": [
+              0.7638641064874331,
+              0.9911187805671268
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 16,
+          "fascist_policies": 0,
+          "hitler_chancellor": 82,
+          "hitler_killed": 2
+        },
+        "avg_rounds": 11.07,
+        "alice_chat_count": 1219,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 0,
+        "refusal_chat_rate": 0.0
+      },
+      "neutral": {
+        "n": 98,
+        "overall_wins": 45,
+        "win_rate": 0.45918367346938777,
+        "win_rate_ci": [
+          0.36392528815047387,
+          0.5575213505511963
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 59,
+            "wins": 27,
+            "win_rate": 0.4576271186440678,
+            "ci": [
+              0.3370110214024243,
+              0.583423849765719
+            ]
+          },
+          "fascist": {
+            "n": 19,
+            "wins": 10,
+            "win_rate": 0.5263157894736842,
+            "ci": [
+              0.31707482511825114,
+              0.7267049451255145
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 8,
+            "win_rate": 0.4,
+            "ci": [
+              0.21880396741419272,
+              0.613422057684794
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 27,
+          "fascist_policies": 2,
+          "hitler_chancellor": 48,
+          "hitler_killed": 21
+        },
+        "avg_rounds": 12.16326530612245,
+        "alice_chat_count": 1336,
+        "alice_empty_chats": 0,
+        "empty_chat_rate": 0.0,
+        "alice_refusal_chats": 0,
+        "refusal_chat_rate": 0.0
+      },
+      "compare": {
+        "overall": {
+          "loaded_wr": 0.46,
+          "neutral_wr": 0.45918367346938777,
+          "delta": -0.0008163265306122547,
+          "z": 0.011523833087227025,
+          "p": 0.9908055150015364,
+          "n_loaded": 100,
+          "n_neutral": 98
+        },
+        "by_role": {
+          "liberal": {
+            "loaded_wr": 0.2,
+            "neutral_wr": 0.4576271186440678,
+            "delta": 0.2576271186440678,
+            "z": -2.9935698145659764,
+            "p": 0.0027573441656821933,
+            "n_loaded": 60,
+            "n_neutral": 59
+          },
+          "fascist": {
+            "loaded_wr": 0.75,
+            "neutral_wr": 0.5263157894736842,
+            "delta": -0.22368421052631582,
+            "z": 1.4555442358638202,
+            "p": 0.14551865312428858,
+            "n_loaded": 20,
+            "n_neutral": 19
+          },
+          "hitler": {
+            "loaded_wr": 0.95,
+            "neutral_wr": 0.4,
+            "delta": -0.5499999999999999,
+            "z": 3.7133776793067774,
+            "p": 0.00020451133395718118,
+            "n_loaded": 20,
+            "n_neutral": 20
+          }
+        }
+      }
+    }
+  }
+}

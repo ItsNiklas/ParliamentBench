@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "status": "PASS",
+      "name": "B1 boot_mean\u2248point",
+      "detail": "max |boot_mean \u2212 point| = 0.0011 (threshold 0.005)"
+    },
+    {
+      "status": "PASS",
+      "name": "B2 role-CI wider",
+      "detail": "fascist-only CI > overall stratified CI for at least one model"
+    },
+    {
+      "status": "PASS",
+      "name": "B3 paired symmetry",
+      "detail": "p(GPT-5.4 vs DeepSeek 3.1 Terminus)=0.0120 vs p(DeepSeek 3.1 Terminus vs GPT-5.4)=0.0070  (|\u0394|<0.03)"
+    },
+    {
+      "status": "PASS",
+      "name": "B4 self-pair p\u22481",
+      "detail": "p(GPT-5.4 vs GPT-5.4) = 1.0000 (expect \u22481.0)"
+    },
+    {
+      "status": "PASS",
+      "name": "B5 p in [1/B, 1]",
+      "detail": "observed p-values: [np.float64(0.012), np.float64(0.007), np.float64(1.0)]"
+    },
+    {
+      "status": "PASS",
+      "name": "D1 rates sum to 1",
+      "detail": "max |\u03a3rates - 1| = 0.00e+00"
+    },
+    {
+      "status": "PASS",
+      "name": "D2 DRR identity",
+      "detail": "max |Active + Ambig + 0.5\u00b7Half \u2212 DRR_formula| = 1.11e-16"
+    },
+    {
+      "status": "PASS",
+      "name": "D3 \u2261 deception_analysis",
+      "detail": "max |our_DRR \u2212 replica| = 1.42e-14"
+    },
+    {
+      "status": "PASS",
+      "name": "P1 reconstruction",
+      "detail": "exact match: 13427/14377 (93.4%); mean|dev|=0.0083; 99p=0.2070; max=0.2924 (inter-model GSIR spread = 7.98 cs)"
+    },
+    {
+      "status": "PASS",
+      "name": "P2 self \u03c1 = 1",
+      "detail": "Spearman \u03c1(base, base) = 1.0"
+    },
+    {
+      "status": "PASS",
+      "name": "P3 \u03b5-perturb stable",
+      "detail": "max rank shift = 0 under \u00b11e-10; \u03c1=1.0 (expect 1.0)"
+    },
+    {
+      "status": "PASS",
+      "name": "P4 gsir_perturbation_20pc",
+      "detail": "N=200, \u03c1_mean=0.9880, top3_preserved=98.5%, bot3_preserved=100.0%"
+    },
+    {
+      "status": "PASS",
+      "name": "P4 gsir_perturbation_40pc",
+      "detail": "N=200, \u03c1_mean=0.9845, top3_preserved=76.0%, bot3_preserved=99.0%"
+    }
+  ]
+}

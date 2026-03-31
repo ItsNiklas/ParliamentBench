@@ -1,0 +1,1860 @@
+{
+  "cells": {
+    "kimi__llama33-70b": {
+      "anchor": "kimi",
+      "opponent": "llama33-70b",
+      "path": "runsF2-KIMIK25",
+      "summary": {
+        "n": 100,
+        "overall_wins": 67,
+        "win_rate": 0.67,
+        "win_rate_ci": [
+          0.5730516033971139,
+          0.7543701620610456
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 34,
+            "win_rate": 0.5666666666666667,
+            "ci": [
+              0.44103214654694856,
+              0.6842779960559936
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 17,
+            "win_rate": 0.85,
+            "ci": [
+              0.6395767041130426,
+              0.9476322080405041
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 16,
+            "win_rate": 0.8,
+            "ci": [
+              0.5839782779742401,
+              0.9193436467288
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 33,
+          "fascist_policies": 2,
+          "hitler_chancellor": 57,
+          "hitler_killed": 8
+        },
+        "avg_rounds": 9.81,
+        "drr": 0.9243027888446215,
+        "drr_decomp": {
+          "active": 0.7260956175298805,
+          "ambiguity": 0.17131474103585656,
+          "half": 0.053784860557768925,
+          "detection": 0.04880478087649402
+        },
+        "drr_events": 1004,
+        "n_drr_games": 40,
+        "mean_gss": 0.06323344028329318,
+        "ja_rate": 0.7221052631578947,
+        "votes_cast": 950,
+        "gsir_cum_overall": 1.2317091539419363,
+        "gsir_cum_by_role": {
+          "liberal": 21.53505280762583,
+          "fascist": -20.57790637954567,
+          "hitler": -37.86870627362215
+        },
+        "gsir_per_action_overall": 0.37898743198213414,
+        "gsir_per_action_by_role": {
+          "liberal": 6.242044292065459,
+          "fascist": -7.482875047107516,
+          "hitler": -12.021811515435603
+        },
+        "gsir_games_by_role": {
+          "liberal": 60,
+          "fascist": 20,
+          "hitler": 20
+        },
+        "gsir_actions": 325,
+        "ria_overall": 0.6814516129032258,
+        "ria_n": 1736,
+        "ria_by_target": {
+          "liberal": 0.7482185273159145,
+          "fascist": 0.63718820861678,
+          "hitler": 0.6004415011037527
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 630.0,
+            "total": 842
+          },
+          "fascist": {
+            "correct": 281.0,
+            "total": 441
+          },
+          "hitler": {
+            "correct": 272.0,
+            "total": 453
+          }
+        }
+      }
+    },
+    "kimi__gemma": {
+      "anchor": "kimi",
+      "opponent": "gemma",
+      "path": "runs-KIMI-vs-GEMMA",
+      "summary": {
+        "n": 51,
+        "overall_wins": 29,
+        "win_rate": 0.5686274509803921,
+        "win_rate_ci": [
+          0.43265061235058067,
+          0.694989719076657
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 31,
+            "wins": 10,
+            "win_rate": 0.3225806451612903,
+            "ci": [
+              0.18569230747313034,
+              0.49859314440049185
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 10,
+            "win_rate": 1.0,
+            "ci": [
+              0.7224598312333834,
+              1.0
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 9,
+            "win_rate": 0.9,
+            "ci": [
+              0.5958436145024278,
+              0.9821242504842788
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 0,
+          "fascist_policies": 3,
+          "hitler_chancellor": 37,
+          "hitler_killed": 11
+        },
+        "avg_rounds": 8.196078431372548,
+        "drr": 0.5460199004975125,
+        "drr_decomp": {
+          "active": 0.4228855721393035,
+          "ambiguity": 0.0472636815920398,
+          "half": 0.1517412935323383,
+          "detection": 0.3781094527363184
+        },
+        "drr_events": 402,
+        "n_drr_games": 20,
+        "mean_gss": -0.09036172717622762,
+        "ja_rate": 0.7556675062972292,
+        "votes_cast": 397,
+        "gsir_cum_overall": -1.8326330198669334,
+        "gsir_cum_by_role": {
+          "liberal": 11.011635912182086,
+          "fascist": -16.050126122714033,
+          "hitler": -27.432373606371797
+        },
+        "gsir_per_action_overall": -0.5465747603111908,
+        "gsir_per_action_by_role": {
+          "liberal": 2.9683540285012584,
+          "fascist": -5.944491156560754,
+          "hitler": -9.459439174610964
+        },
+        "gsir_games_by_role": {
+          "liberal": 31,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 171,
+        "ria_overall": 0.5734375,
+        "ria_n": 640,
+        "ria_by_target": {
+          "liberal": 0.494949494949495,
+          "fascist": 0.6715976331360947,
+          "hitler": 0.6120689655172413
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 147.0,
+            "total": 297
+          },
+          "fascist": {
+            "correct": 113.5,
+            "total": 169
+          },
+          "hitler": {
+            "correct": 106.5,
+            "total": 174
+          }
+        }
+      }
+    },
+    "kimi__gptoss": {
+      "anchor": "kimi",
+      "opponent": "gptoss",
+      "path": "runs-KIMI-vs-GPTOSS120B",
+      "summary": {
+        "n": 49,
+        "overall_wins": 22,
+        "win_rate": 0.4489795918367347,
+        "win_rate_ci": [
+          0.3185262492963633,
+          0.5868513320032188
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 29,
+            "wins": 7,
+            "win_rate": 0.2413793103448276,
+            "ci": [
+              0.12218268185062131,
+              0.4210795221832869
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 7,
+            "win_rate": 0.7,
+            "ci": [
+              0.39677321997956516,
+              0.892210712513788
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 8,
+          "fascist_policies": 1,
+          "hitler_chancellor": 36,
+          "hitler_killed": 4
+        },
+        "avg_rounds": 9.326530612244898,
+        "drr": 0.9429400386847195,
+        "drr_decomp": {
+          "active": 0.4700193423597679,
+          "ambiguity": 0.4506769825918762,
+          "half": 0.04448742746615087,
+          "detection": 0.03481624758220503
+        },
+        "drr_events": 517,
+        "n_drr_games": 20,
+        "mean_gss": 0.023179601721612476,
+        "ja_rate": 0.7304964539007093,
+        "votes_cast": 423,
+        "gsir_cum_overall": 9.303172064000076,
+        "gsir_cum_by_role": {
+          "liberal": 27.18333926920246,
+          "fascist": -3.456600047719839,
+          "hitler": -29.789540719366926
+        },
+        "gsir_per_action_overall": 2.4377295782673993,
+        "gsir_per_action_by_role": {
+          "liberal": 6.976255210680278,
+          "fascist": -0.909631591505221,
+          "hitler": -8.274872422046368
+        },
+        "gsir_games_by_role": {
+          "liberal": 29,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 187,
+        "ria_overall": 0.7126436781609196,
+        "ria_n": 609,
+        "ria_by_target": {
+          "liberal": 0.7568493150684932,
+          "fascist": 0.7710843373493976,
+          "hitler": 0.5629139072847682
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 221.0,
+            "total": 292
+          },
+          "fascist": {
+            "correct": 128.0,
+            "total": 166
+          },
+          "hitler": {
+            "correct": 85.0,
+            "total": 151
+          }
+        }
+      }
+    },
+    "kimi__mistral": {
+      "anchor": "kimi",
+      "opponent": "mistral",
+      "path": "runs-KIMI-vs-MISTRALSMALL",
+      "summary": {
+        "n": 48,
+        "overall_wins": 25,
+        "win_rate": 0.5208333333333334,
+        "win_rate_ci": [
+          0.3832899563598438,
+          0.6552890998421255
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 29,
+            "wins": 11,
+            "win_rate": 0.3793103448275862,
+            "ci": [
+              0.22687795730867344,
+              0.5599777379071503
+            ]
+          },
+          "fascist": {
+            "n": 9,
+            "wins": 6,
+            "win_rate": 0.6666666666666666,
+            "ci": [
+              0.35419734749908977,
+              0.879418401317257
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 12,
+          "fascist_policies": 0,
+          "hitler_chancellor": 32,
+          "hitler_killed": 4
+        },
+        "avg_rounds": 9.3125,
+        "drr": 0.9953596287703017,
+        "drr_decomp": {
+          "active": 0.8491879350348028,
+          "ambiguity": 0.14617169373549885,
+          "half": 0.0,
+          "detection": 0.004640371229698376
+        },
+        "drr_events": 431,
+        "n_drr_games": 19,
+        "mean_gss": -0.024375569643660652,
+        "ja_rate": 0.7142857142857143,
+        "votes_cast": 427,
+        "gsir_cum_overall": 1.477824263094715,
+        "gsir_cum_by_role": {
+          "liberal": 16.12804875467159,
+          "fascist": -13.738572736096133,
+          "hitler": -28.834709163125545
+        },
+        "gsir_per_action_overall": 0.44240598958886385,
+        "gsir_per_action_by_role": {
+          "liberal": 4.724377918035112,
+          "fascist": -4.995844631307684,
+          "hitler": -8.009641434201539
+        },
+        "gsir_games_by_role": {
+          "liberal": 29,
+          "fascist": 8,
+          "hitler": 10
+        },
+        "gsir_actions": 157,
+        "ria_overall": 0.5767160161507402,
+        "ria_n": 743,
+        "ria_by_target": {
+          "liberal": 0.5658263305322129,
+          "fascist": 0.6525,
+          "hitler": 0.5161290322580645
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 202.0,
+            "total": 357
+          },
+          "fascist": {
+            "correct": 130.5,
+            "total": 200
+          },
+          "hitler": {
+            "correct": 96.0,
+            "total": 186
+          }
+        }
+      }
+    },
+    "deepseek__llama33-70b": {
+      "anchor": "deepseek",
+      "opponent": "llama33-70b",
+      "path": "runsF2-DEEPSEEK31TERMINUS",
+      "summary": {
+        "n": 100,
+        "overall_wins": 50,
+        "win_rate": 0.5,
+        "win_rate_ci": [
+          0.40382982859014716,
+          0.5961701714098528
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 24,
+            "win_rate": 0.4,
+            "ci": [
+              0.28569303003765506,
+              0.5263417560579315
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 15,
+            "win_rate": 0.75,
+            "ci": [
+              0.5312949900419365,
+              0.888139947210597
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 11,
+            "win_rate": 0.55,
+            "ci": [
+              0.3420820083075997,
+              0.7418049791429071
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 29,
+          "fascist_policies": 2,
+          "hitler_chancellor": 60,
+          "hitler_killed": 9
+        },
+        "avg_rounds": 10.26,
+        "drr": 0.8062117235345582,
+        "drr_decomp": {
+          "active": 0.5293088363954506,
+          "ambiguity": 0.23534558180227472,
+          "half": 0.0831146106736658,
+          "detection": 0.15223097112860892
+        },
+        "drr_events": 1143,
+        "n_drr_games": 40,
+        "mean_gss": 0.07264900521527326,
+        "ja_rate": 0.7154471544715447,
+        "votes_cast": 984,
+        "gsir_cum_overall": 6.058102966433807,
+        "gsir_cum_by_role": {
+          "liberal": 27.795907433174577,
+          "fascist": -20.150347174952422,
+          "hitler": -32.94686029240228
+        },
+        "gsir_per_action_overall": 1.8030068352481567,
+        "gsir_per_action_by_role": {
+          "liberal": 8.552586902515253,
+          "fascist": -5.757242049986407,
+          "hitler": -9.280805716169656
+        },
+        "gsir_games_by_role": {
+          "liberal": 60,
+          "fascist": 20,
+          "hitler": 20
+        },
+        "gsir_actions": 336,
+        "ria_overall": 0.7860635696821516,
+        "ria_n": 1636,
+        "ria_by_target": {
+          "liberal": 0.8380024360535931,
+          "fascist": 0.773838630806846,
+          "hitler": 0.6933497536945813
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 688.0,
+            "total": 821
+          },
+          "fascist": {
+            "correct": 316.5,
+            "total": 409
+          },
+          "hitler": {
+            "correct": 281.5,
+            "total": 406
+          }
+        }
+      }
+    },
+    "deepseek__gemma": {
+      "anchor": "deepseek",
+      "opponent": "gemma",
+      "path": "runs-DEEPSEEK-vs-GEMMA",
+      "summary": {
+        "n": 50,
+        "overall_wins": 20,
+        "win_rate": 0.4,
+        "win_rate_ci": [
+          0.2760818978624575,
+          0.5381881089724063
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 30,
+            "wins": 7,
+            "win_rate": 0.23333333333333334,
+            "ci": [
+              0.11792239210501232,
+              0.40928672330324267
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 7,
+            "win_rate": 0.7,
+            "ci": [
+              0.39677321997956516,
+              0.892210712513788
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 6,
+            "win_rate": 0.6,
+            "ci": [
+              0.3126695474501864,
+              0.8318224187964902
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 1,
+          "fascist_policies": 4,
+          "hitler_chancellor": 32,
+          "hitler_killed": 13
+        },
+        "avg_rounds": 8.68,
+        "drr": 0.47792207792207797,
+        "drr_decomp": {
+          "active": 0.34805194805194806,
+          "ambiguity": 0.046753246753246755,
+          "half": 0.16623376623376623,
+          "detection": 0.43896103896103894
+        },
+        "drr_events": 385,
+        "n_drr_games": 20,
+        "mean_gss": -0.07755283293804854,
+        "ja_rate": 0.7700258397932817,
+        "votes_cast": 387,
+        "gsir_cum_overall": 3.6463894745377172,
+        "gsir_cum_by_role": {
+          "liberal": 17.517205920093655,
+          "fascist": -13.511758158638216,
+          "hitler": -20.807912228954166
+        },
+        "gsir_per_action_overall": 1.2487635186773005,
+        "gsir_per_action_by_role": {
+          "liberal": 5.053040169257786,
+          "fascist": -6.434170551732484,
+          "hitler": -9.908529632835316
+        },
+        "gsir_games_by_role": {
+          "liberal": 30,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 146,
+        "ria_overall": 0.676865671641791,
+        "ria_n": 670,
+        "ria_by_target": {
+          "liberal": 0.6512968299711815,
+          "fascist": 0.7142857142857143,
+          "hitler": 0.6952662721893491
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 226.0,
+            "total": 347
+          },
+          "fascist": {
+            "correct": 110.0,
+            "total": 154
+          },
+          "hitler": {
+            "correct": 117.5,
+            "total": 169
+          }
+        }
+      }
+    },
+    "deepseek__gptoss": {
+      "anchor": "deepseek",
+      "opponent": "gptoss",
+      "path": "runs-DEEPSEEK-vs-GPTOSS120B",
+      "summary": {
+        "n": 51,
+        "overall_wins": 25,
+        "win_rate": 0.49019607843137253,
+        "win_rate_ci": [
+          0.35857262142306195,
+          0.623193045515904
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 30,
+            "wins": 7,
+            "win_rate": 0.23333333333333334,
+            "ci": [
+              0.11792239210501232,
+              0.40928672330324267
+            ]
+          },
+          "fascist": {
+            "n": 11,
+            "wins": 9,
+            "win_rate": 0.8181818181818182,
+            "ci": [
+              0.5230138624217553,
+              0.9486333993289995
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 9,
+            "win_rate": 0.9,
+            "ci": [
+              0.5958436145024278,
+              0.9821242504842788
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 7,
+          "fascist_policies": 2,
+          "hitler_chancellor": 39,
+          "hitler_killed": 3
+        },
+        "avg_rounds": 9.843137254901961,
+        "drr": 0.8497164461247637,
+        "drr_decomp": {
+          "active": 0.277882797731569,
+          "ambiguity": 0.5217391304347826,
+          "half": 0.1001890359168242,
+          "detection": 0.1001890359168242
+        },
+        "drr_events": 529,
+        "n_drr_games": 21,
+        "mean_gss": -0.008123042334399,
+        "ja_rate": 0.7494780793319415,
+        "votes_cast": 479,
+        "gsir_cum_overall": 13.185221320862675,
+        "gsir_cum_by_role": {
+          "liberal": 23.825659659153978,
+          "fascist": 7.00651141277304,
+          "hitler": -11.939512795112625
+        },
+        "gsir_per_action_overall": 3.186949229213254,
+        "gsir_per_action_by_role": {
+          "liberal": 5.334102908765816,
+          "fascist": 1.9761955266795757,
+          "hitler": -3.1419770513454277
+        },
+        "gsir_games_by_role": {
+          "liberal": 30,
+          "fascist": 11,
+          "hitler": 10
+        },
+        "gsir_actions": 211,
+        "ria_overall": 0.734375,
+        "ria_n": 736,
+        "ria_by_target": {
+          "liberal": 0.7877237851662404,
+          "fascist": 0.7740963855421686,
+          "hitler": 0.5810055865921788
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 308.0,
+            "total": 391
+          },
+          "fascist": {
+            "correct": 128.5,
+            "total": 166
+          },
+          "hitler": {
+            "correct": 104.0,
+            "total": 179
+          }
+        }
+      }
+    },
+    "deepseek__mistral": {
+      "anchor": "deepseek",
+      "opponent": "mistral",
+      "path": "runs-DEEPSEEK-vs-MISTRALSMALL",
+      "summary": {
+        "n": 50,
+        "overall_wins": 31,
+        "win_rate": 0.62,
+        "win_rate_ci": [
+          0.4815019502239357,
+          0.7413740415742278
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 30,
+            "wins": 12,
+            "win_rate": 0.4,
+            "ci": [
+              0.24590394326083403,
+              0.5767994750172616
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 10,
+            "win_rate": 1.0,
+            "ci": [
+              0.7224598312333834,
+              1.0
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 9,
+            "win_rate": 0.9,
+            "ci": [
+              0.5958436145024278,
+              0.9821242504842788
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 10,
+          "fascist_policies": 1,
+          "hitler_chancellor": 36,
+          "hitler_killed": 3
+        },
+        "avg_rounds": 10.12,
+        "drr": 0.9926624737945492,
+        "drr_decomp": {
+          "active": 0.9161425576519916,
+          "ambiguity": 0.07337526205450734,
+          "half": 0.006289308176100629,
+          "detection": 0.0041928721174004195
+        },
+        "drr_events": 477,
+        "n_drr_games": 20,
+        "mean_gss": -0.07100516340557571,
+        "ja_rate": 0.7285714285714285,
+        "votes_cast": 490,
+        "gsir_cum_overall": -0.4428663641474283,
+        "gsir_cum_by_role": {
+          "liberal": 3.94688102002834,
+          "fascist": 8.811057720497226,
+          "hitler": -22.866032601319393
+        },
+        "gsir_per_action_overall": -0.12581430799642868,
+        "gsir_per_action_by_role": {
+          "liberal": 0.9785655421557867,
+          "fascist": 3.830894661085751,
+          "hitler": -7.145635187912309
+        },
+        "gsir_games_by_role": {
+          "liberal": 30,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 176,
+        "ria_overall": 0.6465936739659367,
+        "ria_n": 822,
+        "ria_by_target": {
+          "liberal": 0.6766917293233082,
+          "fascist": 0.6642512077294686,
+          "hitler": 0.5740740740740741
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 270.0,
+            "total": 399
+          },
+          "fascist": {
+            "correct": 137.5,
+            "total": 207
+          },
+          "hitler": {
+            "correct": 124.0,
+            "total": 216
+          }
+        }
+      }
+    },
+    "qwen__llama33-70b": {
+      "anchor": "qwen",
+      "opponent": "llama33-70b",
+      "path": "runsF2-QWEN35",
+      "summary": {
+        "n": 100,
+        "overall_wins": 67,
+        "win_rate": 0.67,
+        "win_rate_ci": [
+          0.5730516033971139,
+          0.7543701620610456
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 60,
+            "wins": 39,
+            "win_rate": 0.65,
+            "ci": [
+              0.5236238380947751,
+              0.7583239827618451
+            ]
+          },
+          "fascist": {
+            "n": 20,
+            "wins": 15,
+            "win_rate": 0.75,
+            "ci": [
+              0.5312949900419365,
+              0.888139947210597
+            ]
+          },
+          "hitler": {
+            "n": 20,
+            "wins": 13,
+            "win_rate": 0.65,
+            "ci": [
+              0.43285051021946463,
+              0.8188104521320554
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 29,
+          "fascist_policies": 6,
+          "hitler_chancellor": 43,
+          "hitler_killed": 22
+        },
+        "avg_rounds": 10.44,
+        "drr": 0.30067001675041877,
+        "drr_decomp": {
+          "active": 0.11222780569514237,
+          "ambiguity": 0.17587939698492464,
+          "half": 0.02512562814070352,
+          "detection": 0.6867671691792295
+        },
+        "drr_events": 1194,
+        "n_drr_games": 40,
+        "mean_gss": 0.061632426242898795,
+        "ja_rate": 0.8068627450980392,
+        "votes_cast": 1020,
+        "gsir_cum_overall": 0.8325487555834997,
+        "gsir_cum_by_role": {
+          "liberal": 23.759928460418177,
+          "fascist": -39.58724412107462,
+          "hitler": -27.52979748226242
+        },
+        "gsir_per_action_overall": 0.24926609448607784,
+        "gsir_per_action_by_role": {
+          "liberal": 7.310747218590208,
+          "fascist": -11.817087797335708,
+          "hitler": -7.647165967295116
+        },
+        "gsir_games_by_role": {
+          "liberal": 60,
+          "fascist": 20,
+          "hitler": 20
+        },
+        "gsir_actions": 334,
+        "ria_overall": 0.6723504721930745,
+        "ria_n": 1906,
+        "ria_by_target": {
+          "liberal": 0.8240165631469979,
+          "fascist": 0.5536842105263158,
+          "hitler": 0.478494623655914
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 796.0,
+            "total": 966
+          },
+          "fascist": {
+            "correct": 263.0,
+            "total": 475
+          },
+          "hitler": {
+            "correct": 222.5,
+            "total": 465
+          }
+        }
+      }
+    },
+    "qwen__gemma": {
+      "anchor": "qwen",
+      "opponent": "gemma",
+      "path": "runs-QWEN-vs-GEMMA",
+      "summary": {
+        "n": 50,
+        "overall_wins": 24,
+        "win_rate": 0.48,
+        "win_rate_ci": [
+          0.3479691239550571,
+          0.6148848774119157
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 30,
+            "wins": 7,
+            "win_rate": 0.23333333333333334,
+            "ci": [
+              0.11792239210501232,
+              0.40928672330324267
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 9,
+            "win_rate": 0.9,
+            "ci": [
+              0.5958436145024278,
+              0.9821242504842788
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 1,
+          "fascist_policies": 5,
+          "hitler_chancellor": 35,
+          "hitler_killed": 9
+        },
+        "avg_rounds": 7.5,
+        "drr": 0.40025252525252525,
+        "drr_decomp": {
+          "active": 0.2777777777777778,
+          "ambiguity": 0.03282828282828283,
+          "half": 0.17929292929292928,
+          "detection": 0.51010101010101
+        },
+        "drr_events": 396,
+        "n_drr_games": 20,
+        "mean_gss": -0.11735855974475358,
+        "ja_rate": 0.8227146814404432,
+        "votes_cast": 361,
+        "gsir_cum_overall": 0.6512108729108139,
+        "gsir_cum_by_role": {
+          "liberal": 3.908637804243672,
+          "fascist": -2.8531861640227962,
+          "hitler": -5.6166728841541484
+        },
+        "gsir_per_action_overall": 0.21707029097027125,
+        "gsir_per_action_by_role": {
+          "liberal": 1.149599354189315,
+          "fascist": -1.141274465609118,
+          "hitler": -2.4420316887626736
+        },
+        "gsir_games_by_role": {
+          "liberal": 30,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 150,
+        "ria_overall": 0.6338983050847458,
+        "ria_n": 295,
+        "ria_by_target": {
+          "liberal": 0.6811594202898551,
+          "fascist": 0.6233766233766234,
+          "hitler": 0.5625
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 94.0,
+            "total": 138
+          },
+          "fascist": {
+            "correct": 48.0,
+            "total": 77
+          },
+          "hitler": {
+            "correct": 45.0,
+            "total": 80
+          }
+        }
+      }
+    },
+    "qwen__gptoss": {
+      "anchor": "qwen",
+      "opponent": "gptoss",
+      "path": "runs-QWEN-vs-GPTOSS120B",
+      "summary": {
+        "n": 50,
+        "overall_wins": 23,
+        "win_rate": 0.46,
+        "win_rate_ci": [
+          0.3296943460178263,
+          0.5960136567161192
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 30,
+            "wins": 7,
+            "win_rate": 0.23333333333333334,
+            "ci": [
+              0.11792239210501232,
+              0.40928672330324267
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 7,
+          "fascist_policies": 1,
+          "hitler_chancellor": 38,
+          "hitler_killed": 4
+        },
+        "avg_rounds": 9.06,
+        "drr": 0.8842315369261478,
+        "drr_decomp": {
+          "active": 0.35129740518962077,
+          "ambiguity": 0.500998003992016,
+          "half": 0.06387225548902195,
+          "detection": 0.08383233532934131
+        },
+        "drr_events": 501,
+        "n_drr_games": 20,
+        "mean_gss": -0.01735966952639205,
+        "ja_rate": 0.8436018957345972,
+        "votes_cast": 422,
+        "gsir_cum_overall": 0.5275630968288908,
+        "gsir_cum_by_role": {
+          "liberal": 11.047932815663433,
+          "fascist": -1.9686246441691628,
+          "hitler": -28.537358318676688
+        },
+        "gsir_per_action_overall": 0.14335953718176378,
+        "gsir_per_action_by_role": {
+          "liberal": 2.9592677184812763,
+          "fascist": -0.5624641840483322,
+          "hitler": -7.712799545588292
+        },
+        "gsir_games_by_role": {
+          "liberal": 30,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 184,
+        "ria_overall": 0.6993817619783617,
+        "ria_n": 647,
+        "ria_by_target": {
+          "liberal": 0.8098159509202454,
+          "fascist": 0.6764705882352942,
+          "hitler": 0.5059523809523809
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 264.0,
+            "total": 326
+          },
+          "fascist": {
+            "correct": 103.5,
+            "total": 153
+          },
+          "hitler": {
+            "correct": 85.0,
+            "total": 168
+          }
+        }
+      }
+    },
+    "qwen__mistral": {
+      "anchor": "qwen",
+      "opponent": "mistral",
+      "path": "runs-QWEN-vs-MISTRALSMALL",
+      "summary": {
+        "n": 51,
+        "overall_wins": 29,
+        "win_rate": 0.5686274509803921,
+        "win_rate_ci": [
+          0.43265061235058067,
+          0.694989719076657
+        ],
+        "by_role": {
+          "liberal": {
+            "n": 31,
+            "wins": 15,
+            "win_rate": 0.4838709677419355,
+            "ci": [
+              0.3196998603127883,
+              0.6515988171302683
+            ]
+          },
+          "fascist": {
+            "n": 10,
+            "wins": 6,
+            "win_rate": 0.6,
+            "ci": [
+              0.3126695474501864,
+              0.8318224187964902
+            ]
+          },
+          "hitler": {
+            "n": 10,
+            "wins": 8,
+            "win_rate": 0.8,
+            "ci": [
+              0.49015684672072335,
+              0.9433190520193067
+            ]
+          }
+        },
+        "win_conditions": {
+          "liberal_policies": 13,
+          "fascist_policies": 1,
+          "hitler_chancellor": 29,
+          "hitler_killed": 8
+        },
+        "avg_rounds": 8.686274509803921,
+        "drr": 0.9977973568281938,
+        "drr_decomp": {
+          "active": 0.8436123348017621,
+          "ambiguity": 0.15198237885462554,
+          "half": 0.004405286343612335,
+          "detection": 0.0
+        },
+        "drr_events": 454,
+        "n_drr_games": 20,
+        "mean_gss": -0.03176338838354963,
+        "ja_rate": 0.8594104308390023,
+        "votes_cast": 441,
+        "gsir_cum_overall": 7.944210285369755,
+        "gsir_cum_by_role": {
+          "liberal": 24.528918811929216,
+          "fascist": -5.321290055147622,
+          "hitler": -30.20288580644718
+        },
+        "gsir_per_action_overall": 2.470455637523522,
+        "gsir_per_action_by_role": {
+          "liberal": 7.382490127862192,
+          "fascist": -1.8349276052233177,
+          "hitler": -9.438401814514744
+        },
+        "gsir_games_by_role": {
+          "liberal": 31,
+          "fascist": 10,
+          "hitler": 10
+        },
+        "gsir_actions": 164,
+        "ria_overall": 0.6296296296296297,
+        "ria_n": 756,
+        "ria_by_target": {
+          "liberal": 0.6844783715012722,
+          "fascist": 0.7122093023255814,
+          "hitler": 0.4424083769633508
+        },
+        "ria_target_pool": {
+          "liberal": {
+            "correct": 269.0,
+            "total": 393
+          },
+          "fascist": {
+            "correct": 122.5,
+            "total": 172
+          },
+          "hitler": {
+            "correct": 84.5,
+            "total": 191
+          }
+        }
+      }
+    }
+  },
+  "anchor_rollup": {
+    "kimi": {
+      "by_opponent": {
+        "llama33-70b": {
+          "n": 100,
+          "win_rate": 0.67,
+          "win_rate_ci": [
+            0.5730516033971139,
+            0.7543701620610456
+          ],
+          "by_role_wr": {
+            "liberal": 0.5666666666666667,
+            "fascist": 0.85,
+            "hitler": 0.8
+          },
+          "drr": 0.9243027888446215,
+          "drr_events": 1004,
+          "n_drr_games": 40,
+          "mean_gss": 0.06323344028329318,
+          "gsir_cum_overall": 1.2317091539419363,
+          "gsir_cum_by_role": {
+            "liberal": 21.53505280762583,
+            "fascist": -20.57790637954567,
+            "hitler": -37.86870627362215
+          },
+          "ria_overall": 0.6814516129032258,
+          "ria_n": 1736
+        },
+        "gemma": {
+          "n": 51,
+          "win_rate": 0.5686274509803921,
+          "win_rate_ci": [
+            0.43265061235058067,
+            0.694989719076657
+          ],
+          "by_role_wr": {
+            "liberal": 0.3225806451612903,
+            "fascist": 1.0,
+            "hitler": 0.9
+          },
+          "drr": 0.5460199004975125,
+          "drr_events": 402,
+          "n_drr_games": 20,
+          "mean_gss": -0.09036172717622762,
+          "gsir_cum_overall": -1.8326330198669334,
+          "gsir_cum_by_role": {
+            "liberal": 11.011635912182086,
+            "fascist": -16.050126122714033,
+            "hitler": -27.432373606371797
+          },
+          "ria_overall": 0.5734375,
+          "ria_n": 640
+        },
+        "gptoss": {
+          "n": 49,
+          "win_rate": 0.4489795918367347,
+          "win_rate_ci": [
+            0.3185262492963633,
+            0.5868513320032188
+          ],
+          "by_role_wr": {
+            "liberal": 0.2413793103448276,
+            "fascist": 0.8,
+            "hitler": 0.7
+          },
+          "drr": 0.9429400386847195,
+          "drr_events": 517,
+          "n_drr_games": 20,
+          "mean_gss": 0.023179601721612476,
+          "gsir_cum_overall": 9.303172064000076,
+          "gsir_cum_by_role": {
+            "liberal": 27.18333926920246,
+            "fascist": -3.456600047719839,
+            "hitler": -29.789540719366926
+          },
+          "ria_overall": 0.7126436781609196,
+          "ria_n": 609
+        },
+        "mistral": {
+          "n": 48,
+          "win_rate": 0.5208333333333334,
+          "win_rate_ci": [
+            0.3832899563598438,
+            0.6552890998421255
+          ],
+          "by_role_wr": {
+            "liberal": 0.3793103448275862,
+            "fascist": 0.6666666666666666,
+            "hitler": 0.8
+          },
+          "drr": 0.9953596287703017,
+          "drr_events": 431,
+          "n_drr_games": 19,
+          "mean_gss": -0.024375569643660652,
+          "gsir_cum_overall": 1.477824263094715,
+          "gsir_cum_by_role": {
+            "liberal": 16.12804875467159,
+            "fascist": -13.738572736096133,
+            "hitler": -28.834709163125545
+          },
+          "ria_overall": 0.5767160161507402,
+          "ria_n": 743
+        }
+      },
+      "comp_vs_baseline": {
+        "gemma": {
+          "delta": -0.1013725490196079,
+          "z": -1.2242693232361068,
+          "p": 0.22085064535436447,
+          "n_a": 51,
+          "n_b": 100,
+          "wr_a": 0.5686274509803921,
+          "wr_b": 0.67
+        },
+        "gptoss": {
+          "delta": -0.22102040816326535,
+          "z": -2.584359474975461,
+          "p": 0.009756005177365024,
+          "n_a": 49,
+          "n_b": 100,
+          "wr_a": 0.4489795918367347,
+          "wr_b": 0.67
+        },
+        "mistral": {
+          "delta": -0.14916666666666667,
+          "z": -1.7516016036912703,
+          "p": 0.07984233663694525,
+          "n_a": 48,
+          "n_b": 100,
+          "wr_a": 0.5208333333333334,
+          "wr_b": 0.67
+        }
+      },
+      "cross_opponent_spread": 0.22102040816326535
+    },
+    "deepseek": {
+      "by_opponent": {
+        "llama33-70b": {
+          "n": 100,
+          "win_rate": 0.5,
+          "win_rate_ci": [
+            0.40382982859014716,
+            0.5961701714098528
+          ],
+          "by_role_wr": {
+            "liberal": 0.4,
+            "fascist": 0.75,
+            "hitler": 0.55
+          },
+          "drr": 0.8062117235345582,
+          "drr_events": 1143,
+          "n_drr_games": 40,
+          "mean_gss": 0.07264900521527326,
+          "gsir_cum_overall": 6.058102966433807,
+          "gsir_cum_by_role": {
+            "liberal": 27.795907433174577,
+            "fascist": -20.150347174952422,
+            "hitler": -32.94686029240228
+          },
+          "ria_overall": 0.7860635696821516,
+          "ria_n": 1636
+        },
+        "gemma": {
+          "n": 50,
+          "win_rate": 0.4,
+          "win_rate_ci": [
+            0.2760818978624575,
+            0.5381881089724063
+          ],
+          "by_role_wr": {
+            "liberal": 0.23333333333333334,
+            "fascist": 0.7,
+            "hitler": 0.6
+          },
+          "drr": 0.47792207792207797,
+          "drr_events": 385,
+          "n_drr_games": 20,
+          "mean_gss": -0.07755283293804854,
+          "gsir_cum_overall": 3.6463894745377172,
+          "gsir_cum_by_role": {
+            "liberal": 17.517205920093655,
+            "fascist": -13.511758158638216,
+            "hitler": -20.807912228954166
+          },
+          "ria_overall": 0.676865671641791,
+          "ria_n": 670
+        },
+        "gptoss": {
+          "n": 51,
+          "win_rate": 0.49019607843137253,
+          "win_rate_ci": [
+            0.35857262142306195,
+            0.623193045515904
+          ],
+          "by_role_wr": {
+            "liberal": 0.23333333333333334,
+            "fascist": 0.8181818181818182,
+            "hitler": 0.9
+          },
+          "drr": 0.8497164461247637,
+          "drr_events": 529,
+          "n_drr_games": 21,
+          "mean_gss": -0.008123042334399,
+          "gsir_cum_overall": 13.185221320862675,
+          "gsir_cum_by_role": {
+            "liberal": 23.825659659153978,
+            "fascist": 7.00651141277304,
+            "hitler": -11.939512795112625
+          },
+          "ria_overall": 0.734375,
+          "ria_n": 736
+        },
+        "mistral": {
+          "n": 50,
+          "win_rate": 0.62,
+          "win_rate_ci": [
+            0.4815019502239357,
+            0.7413740415742278
+          ],
+          "by_role_wr": {
+            "liberal": 0.4,
+            "fascist": 1.0,
+            "hitler": 0.9
+          },
+          "drr": 0.9926624737945492,
+          "drr_events": 477,
+          "n_drr_games": 20,
+          "mean_gss": -0.07100516340557571,
+          "gsir_cum_overall": -0.4428663641474283,
+          "gsir_cum_by_role": {
+            "liberal": 3.94688102002834,
+            "fascist": 8.811057720497226,
+            "hitler": -22.866032601319393
+          },
+          "ria_overall": 0.6465936739659367,
+          "ria_n": 822
+        }
+      },
+      "comp_vs_baseline": {
+        "gemma": {
+          "delta": -0.09999999999999998,
+          "z": -1.1572751247156892,
+          "p": 0.24715997321190725,
+          "n_a": 50,
+          "n_b": 100,
+          "wr_a": 0.4,
+          "wr_b": 0.5
+        },
+        "gptoss": {
+          "delta": -0.009803921568627472,
+          "z": -0.11395567608869316,
+          "p": 0.9092729298387217,
+          "n_a": 51,
+          "n_b": 100,
+          "wr_a": 0.49019607843137253,
+          "wr_b": 0.5
+        },
+        "mistral": {
+          "delta": 0.12,
+          "z": 1.3900960937138316,
+          "p": 0.16449969933310912,
+          "n_a": 50,
+          "n_b": 100,
+          "wr_a": 0.62,
+          "wr_b": 0.5
+        }
+      },
+      "cross_opponent_spread": 0.21999999999999997
+    },
+    "qwen": {
+      "by_opponent": {
+        "llama33-70b": {
+          "n": 100,
+          "win_rate": 0.67,
+          "win_rate_ci": [
+            0.5730516033971139,
+            0.7543701620610456
+          ],
+          "by_role_wr": {
+            "liberal": 0.65,
+            "fascist": 0.75,
+            "hitler": 0.65
+          },
+          "drr": 0.30067001675041877,
+          "drr_events": 1194,
+          "n_drr_games": 40,
+          "mean_gss": 0.061632426242898795,
+          "gsir_cum_overall": 0.8325487555834997,
+          "gsir_cum_by_role": {
+            "liberal": 23.759928460418177,
+            "fascist": -39.58724412107462,
+            "hitler": -27.52979748226242
+          },
+          "ria_overall": 0.6723504721930745,
+          "ria_n": 1906
+        },
+        "gemma": {
+          "n": 50,
+          "win_rate": 0.48,
+          "win_rate_ci": [
+            0.3479691239550571,
+            0.6148848774119157
+          ],
+          "by_role_wr": {
+            "liberal": 0.23333333333333334,
+            "fascist": 0.9,
+            "hitler": 0.8
+          },
+          "drr": 0.40025252525252525,
+          "drr_events": 396,
+          "n_drr_games": 20,
+          "mean_gss": -0.11735855974475358,
+          "gsir_cum_overall": 0.6512108729108139,
+          "gsir_cum_by_role": {
+            "liberal": 3.908637804243672,
+            "fascist": -2.8531861640227962,
+            "hitler": -5.6166728841541484
+          },
+          "ria_overall": 0.6338983050847458,
+          "ria_n": 295
+        },
+        "gptoss": {
+          "n": 50,
+          "win_rate": 0.46,
+          "win_rate_ci": [
+            0.3296943460178263,
+            0.5960136567161192
+          ],
+          "by_role_wr": {
+            "liberal": 0.23333333333333334,
+            "fascist": 0.8,
+            "hitler": 0.8
+          },
+          "drr": 0.8842315369261478,
+          "drr_events": 501,
+          "n_drr_games": 20,
+          "mean_gss": -0.01735966952639205,
+          "gsir_cum_overall": 0.5275630968288908,
+          "gsir_cum_by_role": {
+            "liberal": 11.047932815663433,
+            "fascist": -1.9686246441691628,
+            "hitler": -28.537358318676688
+          },
+          "ria_overall": 0.6993817619783617,
+          "ria_n": 647
+        },
+        "mistral": {
+          "n": 51,
+          "win_rate": 0.5686274509803921,
+          "win_rate_ci": [
+            0.43265061235058067,
+            0.694989719076657
+          ],
+          "by_role_wr": {
+            "liberal": 0.4838709677419355,
+            "fascist": 0.6,
+            "hitler": 0.8
+          },
+          "drr": 0.9977973568281938,
+          "drr_events": 454,
+          "n_drr_games": 20,
+          "mean_gss": -0.03176338838354963,
+          "gsir_cum_overall": 7.944210285369755,
+          "gsir_cum_by_role": {
+            "liberal": 24.528918811929216,
+            "fascist": -5.321290055147622,
+            "hitler": -30.20288580644718
+          },
+          "ria_overall": 0.6296296296296297,
+          "ria_n": 756
+        }
+      },
+      "comp_vs_baseline": {
+        "gemma": {
+          "delta": -0.19000000000000006,
+          "z": -2.245626531152229,
+          "p": 0.02472793962323591,
+          "n_a": 50,
+          "n_b": 100,
+          "wr_a": 0.48,
+          "wr_b": 0.67
+        },
+        "gptoss": {
+          "delta": -0.21000000000000002,
+          "z": -2.4748737341529163,
+          "p": 0.013328328780817567,
+          "n_a": 50,
+          "n_b": 100,
+          "wr_a": 0.46,
+          "wr_b": 0.67
+        },
+        "mistral": {
+          "delta": -0.1013725490196079,
+          "z": -1.2242693232361068,
+          "p": 0.22085064535436447,
+          "n_a": 51,
+          "n_b": 100,
+          "wr_a": 0.5686274509803921,
+          "wr_b": 0.67
+        }
+      },
+      "cross_opponent_spread": 0.21000000000000002
+    }
+  },
+  "rank_table_wr": {
+    "llama33-70b": {
+      "win_rates": {
+        "kimi": 0.67,
+        "deepseek": 0.5,
+        "qwen": 0.67
+      },
+      "ranking": [
+        "qwen",
+        "kimi",
+        "deepseek"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gemma": {
+      "win_rates": {
+        "kimi": 0.5686274509803921,
+        "deepseek": 0.4,
+        "qwen": 0.48
+      },
+      "ranking": [
+        "kimi",
+        "qwen",
+        "deepseek"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gptoss": {
+      "win_rates": {
+        "kimi": 0.4489795918367347,
+        "deepseek": 0.49019607843137253,
+        "qwen": 0.46
+      },
+      "ranking": [
+        "deepseek",
+        "qwen",
+        "kimi"
+      ],
+      "kendall_tau_vs_baseline": -1.0
+    },
+    "mistral": {
+      "win_rates": {
+        "kimi": 0.5208333333333334,
+        "deepseek": 0.62,
+        "qwen": 0.5686274509803921
+      },
+      "ranking": [
+        "deepseek",
+        "qwen",
+        "kimi"
+      ],
+      "kendall_tau_vs_baseline": -1.0
+    }
+  },
+  "rank_table_drr": {
+    "llama33-70b": {
+      "drrs": {
+        "kimi": 0.9243027888446215,
+        "deepseek": 0.8062117235345582,
+        "qwen": 0.30067001675041877
+      },
+      "ranking": [
+        "kimi",
+        "deepseek",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gemma": {
+      "drrs": {
+        "kimi": 0.5460199004975125,
+        "deepseek": 0.47792207792207797,
+        "qwen": 0.40025252525252525
+      },
+      "ranking": [
+        "kimi",
+        "deepseek",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gptoss": {
+      "drrs": {
+        "kimi": 0.9429400386847195,
+        "deepseek": 0.8497164461247637,
+        "qwen": 0.8842315369261478
+      },
+      "ranking": [
+        "kimi",
+        "qwen",
+        "deepseek"
+      ],
+      "kendall_tau_vs_baseline": 0.3333333333333333
+    },
+    "mistral": {
+      "drrs": {
+        "kimi": 0.9953596287703017,
+        "deepseek": 0.9926624737945492,
+        "qwen": 0.9977973568281938
+      },
+      "ranking": [
+        "qwen",
+        "kimi",
+        "deepseek"
+      ],
+      "kendall_tau_vs_baseline": -0.3333333333333333
+    }
+  },
+  "rank_table_gsir": {
+    "llama33-70b": {
+      "gsirs": {
+        "kimi": 1.2317091539419363,
+        "deepseek": 6.058102966433807,
+        "qwen": 0.8325487555834997
+      },
+      "ranking": [
+        "deepseek",
+        "kimi",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gemma": {
+      "gsirs": {
+        "kimi": -1.8326330198669334,
+        "deepseek": 3.6463894745377172,
+        "qwen": 0.6512108729108139
+      },
+      "ranking": [
+        "deepseek",
+        "qwen",
+        "kimi"
+      ],
+      "kendall_tau_vs_baseline": 0.3333333333333333
+    },
+    "gptoss": {
+      "gsirs": {
+        "kimi": 9.303172064000076,
+        "deepseek": 13.185221320862675,
+        "qwen": 0.5275630968288908
+      },
+      "ranking": [
+        "deepseek",
+        "kimi",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "mistral": {
+      "gsirs": {
+        "kimi": 1.477824263094715,
+        "deepseek": -0.4428663641474283,
+        "qwen": 7.944210285369755
+      },
+      "ranking": [
+        "qwen",
+        "kimi",
+        "deepseek"
+      ],
+      "kendall_tau_vs_baseline": -1.0
+    }
+  },
+  "rank_table_ria": {
+    "llama33-70b": {
+      "rias": {
+        "kimi": 0.6814516129032258,
+        "deepseek": 0.7860635696821516,
+        "qwen": 0.6723504721930745
+      },
+      "ranking": [
+        "deepseek",
+        "kimi",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "gemma": {
+      "rias": {
+        "kimi": 0.5734375,
+        "deepseek": 0.676865671641791,
+        "qwen": 0.6338983050847458
+      },
+      "ranking": [
+        "deepseek",
+        "qwen",
+        "kimi"
+      ],
+      "kendall_tau_vs_baseline": 0.3333333333333333
+    },
+    "gptoss": {
+      "rias": {
+        "kimi": 0.7126436781609196,
+        "deepseek": 0.734375,
+        "qwen": 0.6993817619783617
+      },
+      "ranking": [
+        "deepseek",
+        "kimi",
+        "qwen"
+      ],
+      "kendall_tau_vs_baseline": 1.0
+    },
+    "mistral": {
+      "rias": {
+        "kimi": 0.5767160161507402,
+        "deepseek": 0.6465936739659367,
+        "qwen": 0.6296296296296297
+      },
+      "ranking": [
+        "deepseek",
+        "qwen",
+        "kimi"
+      ],
+      "kendall_tau_vs_baseline": 0.3333333333333333
+    }
+  },
+  "anchors": [
+    "kimi",
+    "deepseek",
+    "qwen"
+  ],
+  "opponents": [
+    "llama33-70b",
+    "gemma",
+    "gptoss",
+    "mistral"
+  ],
+  "labels": {
+    "anchor": {
+      "kimi": "Kimi K2.5",
+      "deepseek": "DeepSeek V3.1 Terminus",
+      "qwen": "Qwen 3.5 397B A17B"
+    },
+    "opponent": {
+      "llama33-70b": "Llama 3.3 70B (F2 baseline)",
+      "gemma": "Gemma 3 27B",
+      "gptoss": "GPT-OSS 120B",
+      "mistral": "Mistral Small 24B"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+# ParliamentBench configuration template
+#
+# You can run with:
+#   parliamentbench --config parliamentbench/config.example.yaml
+#
+# CLI flags always override YAML values.
+
+# -----------------------------------------------------------------------------
+# Core game settings
+# -----------------------------------------------------------------------------
+game:
+  # Number of players in each match. Secret Hitler supports 5-10.
+  players: 5
+
+  # Path used by the internal simulator logger for per-run logs.
+  # (Benchmark outputs still go to --output-dir or benchmark.run_name paths.)
+  output: "runs/benchmark.log"
+
+  # Simulator-internal logging verbosity.
+  # One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_level: "INFO"
+
+  # Directory where per-game summary JSON files are written.
+  summary_path: "./runs"
+
+  # Keep false unless you know the simple-mode behavior and want it.
+  simple_mode: false
+
+  # Optional cutoff when replaying JSON game/chat files.
+  cutoff_rounds: 0
+
+  # One entry per seat. Supported values:
+  #   - LLM
+  #   - BASICLLM
+  #   - CPU
+  #   - RULE
+  #   - RANDOM
+  # Example below is "one evaluated model + four CPU opponents".
+  player_types: ["LLM", "CPU", "CPU", "CPU", "CPU"]
+
+  # Runtime speed controls for real-case endpoint testing.
+  # Disable these to reduce generation volume and finish runs much faster.
+  enable_pre_vote_discussion: true
+  enable_post_policy_discussion: true
+  enable_reflection: true
+  enable_rapid_assessment: true
+  max_tokens: 1024
+  request_timeout: 60
+  max_api_retries: 3
+
+  # Loaded-terms ablation. null/"original" = standard Secret Hitler
+  # terminology; "neutral" remaps Hitler/Fascist/Liberal/President/Chancellor
+  # to Saboteur/Reds/Blues/Speaker/Deputy before any text reaches the model.
+  # CLI: --theme neutral
+  theme: null
+
+  # true => raise on a forbidden-term leak instead of warning.
+  # Also settable via the THEME_STRICT env var.
+  theme_strict: false
+
+# -----------------------------------------------------------------------------
+# LLM endpoint routing
+# -----------------------------------------------------------------------------
+llm:
+  # Global fallback used when a specific block is not provided.
+  default:
+    api_key: "${OPENAI_API_KEY:-your-api-key}"
+    base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+    model: "${OPENAI_MODEL:-gpt-4o-mini}"
+
+  # Advanced split config for LLM players.
+  # Useful when one seat should use a stronger model and other LLM seats use a cheaper one.
+  llm_player:
+    # Zero-based player index that should use the "advanced" endpoint/model.
+    advanced_player_index: 0
+
+    advanced:
+      api_key: "${OPENAI_API_KEY:-your-api-key}"
+      base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+      model: "gpt-5.4-mini"
+
+    standard:
+      api_key: "${OPENAI_API_KEY:-your-api-key}"
+      base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+      model: "gpt-4o-mini"
+
+  # Optional overrides by player family.
+  # If omitted, `llm.default` is used.
+  basic_llm_player:
+    api_key: "${OPENAI_API_KEY:-your-api-key}"
+    base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+    model: "gpt-4o-mini"
+
+  # You can still provide model endpoints for CPU/RULE/RANDOM players,
+  # but they are mainly relevant if any inherited LLM logic is used.
+  cpu_player:
+    api_key: "${OPENAI_API_KEY:-your-api-key}"
+    base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+    model: "gpt-4o-mini"
+
+  rule_player:
+    api_key: "${OPENAI_API_KEY:-your-api-key}"
+    base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+    model: "gpt-4o-mini"
+
+  random_player:
+    api_key: "${OPENAI_API_KEY:-your-api-key}"
+    base_url: "${OPENAI_BASE_URL:-https://api.openai.com/v1}"
+    model: "gpt-4o-mini"
+
+# -----------------------------------------------------------------------------
+# Benchmark orchestration settings
+# -----------------------------------------------------------------------------
+benchmark:
+  # Number of games per benchmark run.
+  num_games: 100
+
+  # How Alice's role is assigned across the run:
+  #   - balanced: repeating [liberal, liberal, liberal, fascist, hitler]
+  #   - random: uniform random role per game
+  #   - fixed: always benchmark.fixed_role
+  role_schedule: "balanced"
+
+  # Used only when role_schedule == fixed.
+  fixed_role: "liberal"
+
+  # Deterministic scheduling seed (null for non-deterministic).
+  seed: 42
+
+  # Optional run name suffix for generated output directory.
+  # Example output dir: runs/benchmark_myexp_YYYYMMDD_HHMMSS
+  run_name: "dev"
+
+# -----------------------------------------------------------------------------
+# Internal processing controls
+# -----------------------------------------------------------------------------
+processing:
+  # Enables parallel request execution in player methods where supported.
+  enable_parallel: true
+
+  # Reserved for future multi-game concurrency orchestration.
+  max_parallel_games: 4
+
+# -----------------------------------------------------------------------------
+# Generation options (LLM call knobs)
+# -----------------------------------------------------------------------------
+generation:
+  # false => request the thinking-OFF bundle from reasoning-capable endpoints.
+  # The REASONING_ENABLED env var still overrides this.
+  # CLI: --reasoning / --no-reasoning
+  reasoning_enabled: true
+
+  # Reasoning effort when enabled: low | high
+  reasoning_effort: "low"
+
+  # Completion attempts before giving up (the player then returns "").
+  max_retries: 3
+
+  # LLMPlayer base token budget; scales x(attempt+1) on retry (4096, 8192, ...).
+  max_tokens: 4096
+
+  # BasicLLMPlayer base token budget; scales x(attempt+1) (512, 1024, ...).
+  basic_max_tokens: 512

@@ -1,0 +1,162 @@
+{
+  "perturbation_range_pct": 60,
+  "multiplier_low": 0.4,
+  "multiplier_high": 1.6,
+  "N_PERTURBATIONS": 200,
+  "n_constants": 12,
+  "constants": [
+    "policy_tanh_scale",
+    "deck_size_floor",
+    "deck_size_slope",
+    "conf_round_denom",
+    "power_execution",
+    "power_investigate",
+    "power_peek",
+    "role_correct_liberal",
+    "role_wrong_other",
+    "role_wrong_dangerous",
+    "conf_offset",
+    "conf_divisor"
+  ],
+  "defaults": {
+    "policy_tanh_scale": 1.2,
+    "deck_size_floor": 0.6,
+    "deck_size_slope": 0.4,
+    "conf_round_denom": 5.0,
+    "power_execution": 0.85,
+    "power_investigate": 0.6,
+    "power_peek": 0.35,
+    "role_correct_liberal": 0.5,
+    "role_wrong_other": -0.3,
+    "role_wrong_dangerous": -1.0,
+    "conf_offset": 1.2,
+    "conf_divisor": 2.0
+  },
+  "n_models": 13,
+  "baseline_gsir": {
+    "Gemma 3 27B": -0.9787851758762354,
+    "GPT-OSS 120B": -0.3503449374147143,
+    "GPT-OSS 20B": -1.9069089063658824,
+    "Kimi K2.5": 0.689649976774393,
+    "Llama 3.1 70B": -0.6787382853955823,
+    "Mistral Small 24B": 0.6976005873746649,
+    "OLMo 3.1 32B": -1.4846386510274934,
+    "Qwen 3.5 397B A17B": 2.113241665547348,
+    "DeepSeek 3.1 Terminus": 2.3873410155967982,
+    "GPT-5.4": 4.630895997003892,
+    "Grok 4.1 Fast": 3.8907072271111436,
+    "Algorithmic Agent": 0.6461880409019286,
+    "Random Agent": -3.351354975539042
+  },
+  "baseline_rank": {
+    "GPT-5.4": 1,
+    "Grok 4.1 Fast": 2,
+    "DeepSeek 3.1 Terminus": 3,
+    "Qwen 3.5 397B A17B": 4,
+    "Mistral Small 24B": 5,
+    "Kimi K2.5": 6,
+    "Algorithmic Agent": 7,
+    "GPT-OSS 120B": 8,
+    "Llama 3.1 70B": 9,
+    "Gemma 3 27B": 10,
+    "OLMo 3.1 32B": 11,
+    "GPT-OSS 20B": 12,
+    "Random Agent": 13
+  },
+  "spearman_rho": {
+    "mean": 0.9782417582417583,
+    "median": 0.9780219780219779,
+    "ci95": [
+      0.945054945054945,
+      0.9946428571428572
+    ],
+    "min": 0.9395604395604396
+  },
+  "top3_exact_preserved": 0.675,
+  "bot3_exact_preserved": 0.885,
+  "per_top3_retention": {
+    "GPT-5.4": 1.0,
+    "Grok 4.1 Fast": 1.0,
+    "DeepSeek 3.1 Terminus": 0.675
+  },
+  "per_bot3_retention": {
+    "GPT-OSS 20B": 1.0,
+    "Random Agent": 1.0,
+    "OLMo 3.1 32B": 0.885
+  },
+  "per_constant_sensitivity": {
+    "policy_tanh_scale": {
+      "mean_abs_rank_delta": 0.32307692307692315,
+      "max_abs_rank_delta": 0.7692307692307693,
+      "mean_rho": 0.9859890109890109,
+      "min_rho": 0.9615384615384615
+    },
+    "deck_size_floor": {
+      "mean_abs_rank_delta": 0.11538461538461538,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9942307692307694,
+      "min_rho": 0.9835164835164836
+    },
+    "deck_size_slope": {
+      "mean_abs_rank_delta": 0.07692307692307693,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9964285714285716,
+      "min_rho": 0.9835164835164836
+    },
+    "conf_round_denom": {
+      "mean_abs_rank_delta": 0.13846153846153847,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.99478021978022,
+      "min_rho": 0.9835164835164836
+    },
+    "power_execution": {
+      "mean_abs_rank_delta": 0.12307692307692306,
+      "max_abs_rank_delta": 0.15384615384615385,
+      "mean_rho": 0.995604395604396,
+      "min_rho": 0.9945054945054945
+    },
+    "power_investigate": {
+      "mean_abs_rank_delta": 0.0,
+      "max_abs_rank_delta": 0.0,
+      "mean_rho": 1.0,
+      "min_rho": 1.0
+    },
+    "power_peek": {
+      "mean_abs_rank_delta": 0.11538461538461538,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9953296703296705,
+      "min_rho": 0.9835164835164836
+    },
+    "role_correct_liberal": {
+      "mean_abs_rank_delta": 0.22307692307692312,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9884615384615387,
+      "min_rho": 0.9780219780219779
+    },
+    "role_wrong_other": {
+      "mean_abs_rank_delta": 0.007692307692307693,
+      "max_abs_rank_delta": 0.15384615384615385,
+      "mean_rho": 0.9997252747252748,
+      "min_rho": 0.9945054945054945
+    },
+    "role_wrong_dangerous": {
+      "mean_abs_rank_delta": 0.1769230769230769,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9895604395604394,
+      "min_rho": 0.9780219780219779
+    },
+    "conf_offset": {
+      "mean_abs_rank_delta": 0.16923076923076924,
+      "max_abs_rank_delta": 0.3076923076923077,
+      "mean_rho": 0.9923076923076923,
+      "min_rho": 0.9835164835164836
+    },
+    "conf_divisor": {
+      "mean_abs_rank_delta": 0.12307692307692306,
+      "max_abs_rank_delta": 0.46153846153846156,
+      "mean_rho": 0.99478021978022,
+      "min_rho": 0.9780219780219779
+    }
+  },
+  "notes": "Each of N_PERTURBATIONS draws multiplies every constant in SPEC_PARAM_KEYS by an iid Uniform[0.8, 1.2] factor. The Spearman correlation compares perturbed model rankings to the unperturbed GSIR ranking. Per-constant sensitivity is the average absolute rank shift across SENS_PER_CONST one-at-a-time perturbations."
+}
