@@ -109,14 +109,7 @@ class HumanPlayer(BasePlayer):
     def nominate_chancellor(self) -> "BasePlayer":
         self._print_header("Nominate a Chancellor")
 
-        eligible = [
-            player
-            for player in self.state.players
-            if not player.is_dead
-            and player != self
-            and player != self.state.chancellor
-            and (self.state.ex_president is None or player != self.state.ex_president or len([p for p in self.state.players if not p.is_dead]) <= 5)
-        ]
+        eligible = self.state.eligible_chancellors(self)  # OFFICIAL RULES (F11)
 
         if not eligible:
             display_info_message("No eligible players found; selecting randomly.")
@@ -169,7 +162,7 @@ class HumanPlayer(BasePlayer):
 
     def inspect_player(self) -> "BasePlayer":
         self._print_header("Investigation Decision")
-        eligible = [player for player in self.state.players if player != self and not player.is_dead]
+        eligible = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
         if not eligible:
             raise ValueError("No inspection targets available")
         options = [player.name for player in eligible]

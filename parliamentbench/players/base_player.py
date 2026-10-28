@@ -65,6 +65,7 @@ class BasePlayer:
         self.hitler = None
         self.is_dead = False
         self.inspected_players = ""
+        self.investigations: list[str] = []  # OFFICIAL RULES (F14): this player's own results
         self.inspection = ""
         
         # Instance-level LLM client configuration
@@ -333,6 +334,14 @@ class BasePlayer:
         )
         formatted_hitler = str(self.hitler) if self.hitler else "Unknown"
 
+        # Lines that appear only when they apply (otherwise the state reads exactly as before).
+        extra = ""
+        if self.investigations:  # OFFICIAL RULES (F14)
+            extra += f"        Your investigations (only you know these): {'; '.join(self.investigations)}\n"
+        proposer = getattr(self.state, "veto_proposed_by", None)
+        if proposer is not None and self is self.state.president:  # OFFICIAL RULES (F10)
+            extra += f"        Chancellor {proposer} has proposed a veto; you decide whether to agree.\n"
+
         return f"""-----------------------------------
         Your name: {self.name}
         Your role: {self.role}
@@ -346,7 +355,7 @@ class BasePlayer:
         Most recent policy: {self.state.most_recent_policy}
         Known fascists: {formatted_fascists}
         Hitler: {formatted_hitler}
-        -----------------------------------
+{extra}        -----------------------------------
         """
 
     # inspected players:{self.inspected_players}

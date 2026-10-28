@@ -72,16 +72,7 @@ class LLMPlayer(BasePlayer):
         :return: BasePlayer
         one of self.state.players
         """
-        # Get eligible players (not self, not current chancellor, not dead)
-        eligible_players = [
-            player for player in self.state.players 
-            if player != self 
-            and player != self.state.chancellor
-            and not player.is_dead
-        ]
-        # Also exclude ex-president in larger games
-        if len(self.state.players) > 6 and self.state.ex_president:
-            eligible_players = [p for p in eligible_players if p != self.state.ex_president]
+        eligible_players = self.state.eligible_chancellors(self)  # OFFICIAL RULES (F11)
 
         prompt = f"""
         It is now your turn to nominate a chancellor.
@@ -93,7 +84,7 @@ class LLMPlayer(BasePlayer):
         VALID OPTIONS (you MUST choose one of these):
             {["FINAL SELECTION: " + player.name for player in eligible_players]}
         
-        Do NOT nominate yourself, the current chancellor, dead players, or the previous president (in games with 7+ players).
+        Do NOT nominate yourself, the last elected chancellor, dead players, or (while more than five players are alive) the last elected president.
 
         You will first explain your inner thoughts and reasoning (which are private to you), then you will nominate EXACTLY and ONLY with one of the VALID OPTIONS above.
         """
@@ -209,10 +200,8 @@ class LLMPlayer(BasePlayer):
         Choose a person's party membership to inspect
         :return:
         """
-        
-        # Get eligible players (alive and not self)
-        eligible_players = [player for player in self.state.players 
-                          if player != self and not player.is_dead]
+
+        eligible_players = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
         
         if not eligible_players:
             logger.error("No eligible players to inspect!")
@@ -227,7 +216,7 @@ class LLMPlayer(BasePlayer):
         VALID OPTIONS (you MUST choose one of these):
             {["FINAL INVESTIGATION: " + player.name for player in eligible_players]}
         
-        You should NOT inspect yourself (you already know your role) or dead players.
+        You should NOT inspect yourself (you already know your role), dead players, or anyone who has already been investigated.
 
         First, please describe what your inner thoughts and strategies are for this current move (they are private to you). Your future self will reference this strategy on the next turn when deciding what to do.
         Then you will investigate and respond EXACTLY and ONLY with one of the VALID OPTIONS above.

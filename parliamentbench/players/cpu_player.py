@@ -134,12 +134,8 @@ class CPUPlayer(BasePlayer):
             if exclude_self and player.name == self.name:
                 continue
 
-            # Term limit rules: can't nominate last chancellor
-            if self.state.chancellor and player.name == self.state.chancellor.name:
-                continue
-
-            # In games with >5 players, can't nominate last president either
-            if len([p for p in self.state.players if not p.is_dead]) > 5 and self.state.ex_president and player.name == self.state.ex_president.name:
+            # OFFICIAL RULES (F11): term limits as GameState.eligible_chancellors applies them
+            if player not in self.state.eligible_chancellors(None):
                 continue
 
             eligible.append(player)
@@ -357,7 +353,7 @@ class CPUPlayer(BasePlayer):
 
     def inspect_player(self) -> "BasePlayer":
         """Choose a player to investigate their party membership"""
-        eligible = [p for p in self.state.players if p.name != self.name and not p.is_dead]
+        eligible = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
 
         if self.role.party_membership == "liberal" or self.is_hitler:
             # Liberals and Hitler investigate suspicious players
