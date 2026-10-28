@@ -11,11 +11,7 @@ class RandomPlayer(BasePlayer):
         return random.choice([Ja(), Nein()])
     
     def nominate_chancellor(self) -> "BasePlayer":
-        # Get eligible players (not self, not dead, not current/ex chancellor)
-        eligible_players = [player for player in self.state.players 
-                          if player != self and not player.is_dead 
-                          and player != self.state.chancellor 
-                          and player != self.state.ex_president]
+        eligible_players = self.state.eligible_chancellors(self)  # OFFICIAL RULES (F11)
         
         if not eligible_players:
             return choice(self.state.players)
@@ -51,8 +47,7 @@ class RandomPlayer(BasePlayer):
         return choice(eligible_players)
     
     def inspect_player(self) -> "BasePlayer":
-        eligible_players = [player for player in self.state.players 
-                          if player != self and not player.is_dead]
+        eligible_players = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
         if not eligible_players:
             return choice(self.state.players)
         return choice(eligible_players)

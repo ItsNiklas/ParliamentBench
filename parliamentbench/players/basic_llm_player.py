@@ -144,16 +144,7 @@ Respond with ONLY "JA" (yes) or "NEIN" (no)."""
 
     def nominate_chancellor(self) -> "BasePlayer":
         """Nominate chancellor without CoT"""
-        # Get eligible players (not self, not current chancellor, not dead)
-        eligible = [
-            p for p in self.state.players 
-            if p != self 
-            and p != self.state.chancellor
-            and not p.is_dead
-        ]
-        # Also exclude ex-president in larger games
-        if len(self.state.players) > 6 and self.state.ex_president:
-            eligible = [p for p in eligible if p != self.state.ex_president]
+        eligible = self.state.eligible_chancellors(self)  # OFFICIAL RULES (F11)
         
         if not eligible:
             logger.error("No eligible chancellors!")
@@ -164,7 +155,7 @@ Respond with ONLY "JA" (yes) or "NEIN" (no)."""
 VALID OPTIONS (choose one of these names EXACTLY):
 {', '.join([p.name for p in eligible])}
 
-You cannot pick yourself, the current chancellor, dead players, or the previous president (in 7+ player games).
+You cannot pick yourself, the last elected chancellor, dead players, or (while more than five players are alive) the last elected president.
 
 Respond with ONLY the player name from the valid options."""
 
@@ -211,8 +202,8 @@ Respond with ONLY the player name from the valid options."""
 
     def inspect_player(self) -> "BasePlayer":
         """Inspect a player without CoT"""
-        eligible = [p for p in self.state.players if p != self and not p.is_dead]
-        
+        eligible = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
+
         if not eligible:
             logger.error("No eligible players to inspect!")
             return choice(self.state.players)
@@ -222,7 +213,7 @@ Respond with ONLY the player name from the valid options."""
 VALID OPTIONS (choose one of these names EXACTLY):
 {', '.join([p.name for p in eligible])}
 
-You cannot inspect yourself or dead players.
+You cannot inspect yourself, dead players, or anyone already investigated.
 
 Respond with ONLY the player name from the valid options."""
 

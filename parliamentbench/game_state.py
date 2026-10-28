@@ -46,6 +46,8 @@ class GameState:
         self.chat_log: list[str] = []  # Added chat_log from ParliamentGame
         self.hitler: Optional["BasePlayer"] = None  # Added hitler from ParliamentGame
         self.game_data_logs: list[dict] = []  # Added structured logs for JSON summary
+        self.investigated: list["BasePlayer"] = []  # OFFICIAL RULES (F13): nobody twice
+        self.veto_proposed_by: Optional["BasePlayer"] = None  # OFFICIAL RULES (F10)
 
         # Former HitlerBoard attributes
         self.num_players = playercount
@@ -277,6 +279,30 @@ class GameState:
     def return_policy(self, policies: list[Policy]) -> None:
         self.policies.extend(policies)
         shuffle(self.policies)
+
+    def eligible_chancellors(self, president: Optional["BasePlayer"]) -> list["BasePlayer"]:
+        """OFFICIAL RULES (F11): the players `president` may nominate — everyone alive but the
+        President, the last elected Chancellor, and the last elected President while more than five
+        players are alive. At nomination time the engine keeps the last elected government in
+        `chancellor` / `ex_president` (F5). Every player type and the engine use this one rule
+        (there used to be four different versions, one counting the players at the start, not the living)."""
+        alive = [p for p in self.players if not p.is_dead]
+        return [p for p in alive
+                if p is not president and p is not self.chancellor
+                and not (len(alive) > 5 and p is self.ex_president)]
+
+    def eligible_investigation_targets(self, president: Optional["BasePlayer"]) -> list["BasePlayer"]:
+        """OFFICIAL RULES (F13): any other living player — but no player may be investigated twice."""
+        return [p for p in self.players if not p.is_dead and p is not president and p not in self.investigated]
+
+    def reshuffle_if_low(self) -> None:
+        """OFFICIAL RULES (F7): at the end of a legislative session, fewer than three policies in
+        the draw pile are shuffled together with the discard pile into a new draw pile. The deck used to be
+        refilled only when a draw ran short, and kept the leftover cards on top, unshuffled."""
+        if len(self.policies) < 3:
+            self.policies = self.policies + self.discards
+            self.discards = []
+            shuffle(self.policies)
 
     def enact_policy(self, policy: Policy) -> bool:
         """

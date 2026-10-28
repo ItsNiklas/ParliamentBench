@@ -64,10 +64,7 @@ class RulePlayer(BasePlayer):
     
     def nominate_chancellor(self) -> "BasePlayer":
         """Nominate chancellor based on role strategy"""
-        eligible_players = [player for player in self.state.players 
-                          if player != self and not player.is_dead 
-                          and player != self.state.chancellor 
-                          and player != self.state.ex_president]
+        eligible_players = self.state.eligible_chancellors(self)  # OFFICIAL RULES (F11)
         
         if not eligible_players:
             # Fallback to any non-self player if no eligible players
@@ -184,8 +181,7 @@ class RulePlayer(BasePlayer):
     
     def inspect_player(self) -> "BasePlayer":
         """Inspect a player's party membership"""
-        eligible_players = [player for player in self.state.players 
-                          if player != self and not player.is_dead]
+        eligible_players = self.state.eligible_investigation_targets(self)  # OFFICIAL RULES (F13)
         if not eligible_players:
             # Fallback to any non-self player if no eligible players
             fallback_players = [player for player in self.state.players if player != self]

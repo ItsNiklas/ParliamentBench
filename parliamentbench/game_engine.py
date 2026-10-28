@@ -135,6 +135,12 @@ class ParliamentGame:
         """Main game loop"""
         display_game_header()
         logger.info("Starting game")
+        # OFFICIAL RULES (F5, F8): the last elected government (for term limits) and whether
+        # Hitler was actually elected Chancellor (for scoring).
+        self.last_elected = (None, None)
+        self.hitler_elected = False
+        self.special_president = None  # OFFICIAL RULES (F12)
+        self.resume_after = None
         self.assign_players()
         self.inform_fascists()
         # self.choose_first_president()
@@ -168,7 +174,10 @@ class ParliamentGame:
                 logger.info("Game ending condition reached")
                 break
 
-            if self.state.turn_count >= 20:
+            # OFFICIAL RULES (F9): the real game has no round limit. Every round enacts a policy
+            # or advances the tracker, and the third failure enacts one, so a game ends within
+            # 30 rounds; 40 is a safety net that never decides a game (previously 20).
+            if self.state.turn_count >= 40:
                 logger.warning("Ending game forcefully.")
                 break
 
@@ -182,6 +191,14 @@ class ParliamentGame:
         logger.debug("Updating presidency")
         self.state.ex_president = self.state.president
         self.set_next_president()
+        # OFFICIAL RULES (F5): term limits apply to the last ELECTED President and Chancellor.
+        # Previously the last NOMINEE (even a rejected one) stayed in state.chancellor and the
+        # previous President (elected or not) in ex_president — and every player's list of
+        # valid nominees is built from these two fields. After a blind policy both are cleared
+        # (F4). With 5 players alive only the Chancellor limit applies (F11).
+        self.state.ex_president, self.state.chancellor = self.last_elected
+        self.policy_enacted_this_turn = False
+        self.blind_policy_this_turn = False
 
         # Initialize a log entry for this turn
         self.current_log_entry = {
@@ -277,6 +294,7 @@ class ParliamentGame:
 
             # Possibility to win if Hitler is chancellor and more than 2 fascist policies enacted.
             if self.hitler_chancellor_win():
+                self.hitler_elected = True  # OFFICIAL RULES (F8)
                 self.state.game_data_logs.append(self.current_log_entry)
                 logger.info("Hitler chancellor win condition met.")
                 return True
@@ -284,7 +302,12 @@ class ParliamentGame:
             action_enacted = self.vote_passed()
 
         # Post-policy discussion -----------------------------------------------------
-        if action_enacted and self.enable_post_policy_discussion:
+        # OFFICIAL RULES (F6): the "Discussion After Policy Enactment" phase only ran when the
+        # policy unlocked a presidential power (`action_enacted` is enact_policy()'s "power
+        # unlocked" flag), so after a Liberal or the 1st/2nd Fascist policy nobody could speak
+        # until the next nomination. Discuss after every enacted policy that doesn't end the game;
+        # then the power — never after a blind policy (F3).
+        if self.policy_enacted_this_turn and not self.policy_win() and self.enable_post_policy_discussion:
             # DISCUSS HERE
             logger.debug("Starting post-policy discussion")
             chat = "Discussion After Policy Enactment:\n"
@@ -303,6 +326,7 @@ class ParliamentGame:
                     f"Player {player.name} has provided their post-policy input"
                 )
 
+        if action_enacted and not self.blind_policy_this_turn and not self.policy_win():
             self.perform_vote_action()
 
         if self.policy_win():
@@ -436,6 +460,14 @@ class ParliamentGame:
 
     def set_next_president(self) -> None:
         logger.debug("Setting next president")
+        # OFFICIAL RULES (F12): a Special Election's choice presides next; then the rotation resumes
+        # to the left of the President who called it.
+        if self.special_president is not None:
+            self.state.president, self.special_president = self.special_president, None
+            logger.info(f"New president (special election) is {self.state.president}")
+            return
+        if self.resume_after is not None:
+            self.state.president, self.resume_after = self.resume_after, None
         if self.state.president is None:
             self.choose_first_president()
             return
@@ -454,29 +486,20 @@ class ParliamentGame:
             logger.error("No president for chancellor nomination!")
             raise ValueError("No president!")
 
-        # Get valid chancellor candidates
-        valid_chancellors = [
-            p for p in self.state.players
-            if p != self.state.chancellor
-            and p != self.state.president
-            and not (self.playernum > 6 and p == self.state.ex_president)
-            and not p.is_dead
-        ]
-        
+        # OFFICIAL RULES (F11): the one eligibility rule (GameState.eligible_chancellors). This check
+        # used to term-limit the last President only when the game STARTED with 7+ players, so 6-player
+        # games never limited it and 7+ games kept limiting it with five players left.
+        valid_chancellors = self.state.eligible_chancellors(self.state.president)
+
         if not valid_chancellors:
             logger.error("No valid chancellors available!")
             raise ValueError("No valid chancellors!")
 
-        chancellor = self.state.chancellor
+        chancellor = None
         max_retries = 5
         retry_count = 0
-        
-        while (
-            chancellor == self.state.chancellor
-            or chancellor == self.state.president
-            or (self.playernum > 6 and chancellor == self.state.ex_president)
-            or (chancellor and chancellor.is_dead)
-        ):
+
+        while chancellor not in valid_chancellors:
             if retry_count >= max_retries:
                 logger.warning(f"President {self.state.president.name} failed to nominate valid chancellor after {max_retries} attempts. Selecting randomly from valid options: {[p.name for p in valid_chancellors]}")
                 chancellor = random.choice(valid_chancellors)
@@ -641,7 +664,14 @@ class ParliamentGame:
         # Update log entry with the automatically enacted policy
         self.current_log_entry["enactedPolicy"] = auto_policy.type
         self.state.game_data_logs.append(self.current_log_entry)
-        return self.state.enact_policy(auto_policy)
+        # OFFICIAL RULES (F3, F4): a blind policy grants no presidential power (turn() skips it)
+        # and wipes the term limits.
+        self.blind_policy_this_turn = True
+        self.policy_enacted_this_turn = True
+        self.last_elected = (None, None)
+        power = self.state.enact_policy(auto_policy)
+        self.state.reshuffle_if_low()  # OFFICIAL RULES (F7)
+        return power
 
     def vote_failed(self) -> bool:
         logger.info("Vote failed")
@@ -676,6 +706,7 @@ class ParliamentGame:
         if self.state.president is None or self.state.chancellor is None:
             logger.error("Missing president/chancellor!")
             raise ValueError()
+        self.last_elected = (self.state.president, self.state.chancellor)  # OFFICIAL RULES (F5)
 
         drawn_policies = self.state.draw_policy(3)
         logger.debug(f"Drew policies: {drawn_policies}")
@@ -702,15 +733,23 @@ class ParliamentGame:
             logger.info("Veto power is available - checking for veto")
             display_info_message("[bold yellow]Veto power available - President and Chancellor deciding...[/bold yellow]")
             
-            # Both president and chancellor must agree to veto
-            logger.debug(f"President {self.state.president} considering veto...")
-            president_veto = self.state.president.veto([enact, discard])
-            logger.debug(f"President veto decision: {president_veto}")
-            
+            # OFFICIAL RULES (F10): the Chancellor may propose a veto; only then does the President,
+            # knowing it was proposed, consent or refuse — in the open. Both used to be asked at once,
+            # each without knowing the other's wish, and kept a refused veto secret.
             logger.debug(f"Chancellor {self.state.chancellor} considering veto...")
             chancellor_veto = self.state.chancellor.veto([enact, discard])
             logger.debug(f"Chancellor veto decision: {chancellor_veto}")
-            
+            president_veto = False
+            if chancellor_veto:
+                self.log += f"Chancellor {self.state.chancellor} proposed a veto\n"
+                self.state.veto_proposed_by = self.state.chancellor
+                logger.debug(f"President {self.state.president} considering veto...")
+                president_veto = self.state.president.veto([enact, discard])
+                self.state.veto_proposed_by = None
+                logger.debug(f"President veto decision: {president_veto}")
+                if not president_veto:
+                    self.log += f"President {self.state.president} refused the veto\n"
+
             if president_veto and chancellor_veto:
                 logger.info("Veto enacted by both President and Chancellor")
                 display_veto()
@@ -718,7 +757,8 @@ class ParliamentGame:
                 
                 # Discard both remaining policies
                 self.state.discard([enact, discard])
-                
+                self.state.reshuffle_if_low()  # OFFICIAL RULES (F7)
+
                 # Record veto in log entry
                 self.current_log_entry["enactedPolicy"] = "veto"
                 self.current_log_entry["vetoUsed"] = True
@@ -754,8 +794,14 @@ class ParliamentGame:
         for player in self.state.players:
             if isinstance(player, CPUPlayer) and not player.is_dead:
                 player.update_after_legislation()
-        
-        return self.state.enact_policy(enact)
+
+        # OFFICIAL RULES (F1): enacting a policy resets the election tracker. It used to reset
+        # only after a blind policy, so any three failed elections in a game enacted a blind policy.
+        self.state.failed_votes = 0
+        self.policy_enacted_this_turn = True
+        power = self.state.enact_policy(enact)
+        self.state.reshuffle_if_low()  # OFFICIAL RULES (F7)
+        return power
 
     def hitler_chancellor_win(self) -> bool:
         result = self.state.fascist_track >= 3 and self.state.chancellor == self.state.hitler
@@ -800,7 +846,10 @@ class ParliamentGame:
             )
             self.state.president.view_policies(top_three)
             display_policy_view(self.state.president)
-            self.state.return_policy(top_three)
+            # OFFICIAL RULES (F2): the President looks at the top three policies and they go back on
+            # top in the same order. They used to go to the bottom, and the whole draw pile was
+            # shuffled (return_policy), so the peek said nothing about the next draw.
+            self.state.policies = top_three + self.state.policies
 
         elif action == "kill":
             display_info_message(
@@ -838,22 +887,19 @@ class ParliamentGame:
             display_info_message(
                 "[bold yellow]President investigating a player...[/bold yellow]"
             )
-            # Get valid inspection targets
-            valid_targets = [
-                p for p in self.state.players
-                if not p.is_dead and p != self.state.president
-            ]
-            
+            # OFFICIAL RULES (F13): no player may be investigated twice in the same game.
+            valid_targets = self.state.eligible_investigation_targets(self.state.president)
+
             if not valid_targets:
                 logger.warning("No valid inspection targets available!")
                 return
-            
+
             inspect = self.state.president.inspect_player()
             logger.debug(f"Initial inspect target: {inspect}")
-            
+
             max_retries = 5
             retry_count = 0
-            while inspect.is_dead or inspect == self.state.president:
+            while inspect not in valid_targets:
                 if retry_count >= max_retries:
                     logger.warning(f"President {self.state.president.name} failed to select valid inspection target after {max_retries} attempts. Selecting randomly from: {[p.name for p in valid_targets]}")
                     inspect = random.choice(valid_targets)
@@ -864,6 +910,12 @@ class ParliamentGame:
             self.state.president.inspected_players = (
                 f"{inspect.name} is a {inspect.role.party_membership}"
             )
+            # OFFICIAL RULES (F14): the President sees the loyalty. It used to be stored only in
+            # `inspected_players`, which no prompt shows (it's commented out of get_known_state), so a
+            # model never learned what it investigated. It now appears in that President's own state.
+            self.state.president.investigations.append(self.state.president.inspected_players)
+            self.state.investigated.append(inspect)
+            self.log += f"President {self.state.president} investigated {inspect}\n"
             logger.info(f"President inspected {inspect}")
             display_player_investigated(self.state.president, inspect)
             
@@ -902,7 +954,12 @@ class ParliamentGame:
                 chosen = self.state.president.choose_next()
                 retry_count += 1
 
-            self.state.president = chosen
+            # OFFICIAL RULES (F12): `chosen` is the next President; afterwards the placard returns to the
+            # left of the President who called the Special Election. This used to set state.president
+            # to `chosen` here, and the next turn's set_next_president() moved straight past them — the
+            # chosen player never became President.
+            self.special_president = chosen
+            self.resume_after = current_president
             logger.info(f"President selected {chosen} as next president")
             self.log += f"President {current_president} has chosen {chosen} as the next president\n"
             display_next_president_chosen(current_president, chosen)
@@ -920,7 +977,10 @@ class ParliamentGame:
             "fascist": self.state.fascist_track
         }
 
-        if self.hitler_chancellor_win():
+        # OFFICIAL RULES (F8): only a Hitler who was actually elected. This used to re-check
+        # state.chancellor here, which is the last NOMINEE: a rejected Hitler nomination followed
+        # by a game-ending blind policy at 3+ Fascist policies was scored as "Hitler elected".
+        if self.hitler_elected:
             display_game_over("hitler_chancellor")
             logger.info("Fascists win by electing Hitler!")
             self.game_end_reason = "hitler_chancellor"
